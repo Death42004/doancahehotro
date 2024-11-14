@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thế Giới Nhà Đất</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #2c3e50;
+            color: #fff;
+        }
+        .navigation .btn {
+            padding: 10px 15px;
+            color: #fff;
+            background-color: #e67e22;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .navigation .btn:hover {
+            background-color: #d35400;
+        }
+        .bang {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #34495e;
+            border-radius: 5px;
+        }
+        .bang ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+        }
+        .bang ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .bang ul li a:hover {
+            color: #e67e22;
+        }
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 20px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .form-group {
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .form-group {
+                width: calc(50% - 10px);
+            }
+        }
+        .form-control, select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .form-group label {
+            display: block;
+            margin: 5px 0;
+            font-weight: bold;
+            color: #333;
+        }
+        .btn-block {
+            width: 100%;
+            padding: 10px;
+            background-color: #2c3e50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .btn-block:hover {
+            background-color: #1a242f;
+        }
+        .anh3 {
+            height: 200px;
+            background: url('banner-image.jpg') center/cover no-repeat;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navigation">
+        <button class="btn search">Tìm bất động sản</button>
+        <button class="btn post">Đăng tin miễn phí</button>
+    </nav>
+    <div class="bang">
+        <ul>
+            <li><a href="#"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+            <li><a href="#"><i class="fa-solid fa-house"></i> Nhà đất bán</a></li>
+            <li><a href="#"><i class="fa-solid fa-house"></i> Dự án</a></li>
+            <li><a href="#"><i class="fa-solid fa-house"></i> Tin tức</a></li>
+            <li><a href="#"><i class="fa-solid fa-house"></i> Liên hệ</a></li>
+        </ul>
+    </div>
+    <div class="anh3"></div>
+    <div class="container">
+        <form class="bg-dark-50 pt-3 px-3" action="/predict" method="POST">
+            <div class="form-group">
+                <input name="demand" type="radio" value="148" checked>
+                <label>Nhà đất bán</label>
+            </div>
+            <div class="form-group">
+                <label for="khu_vuc">Khu vực</label>
+                <select id="khu_vuc" name="khu_vuc">
+                    {% for khu_vuc in unique_khu_vuc %}
+                        <option value="{{ khu_vuc }}">{{ khu_vuc }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="duong">Đường</label>
+                <select id="duong" name="duong">
+                    {% for duong in unique_duong %}
+                        <option value="{{ duong }}">{{ duong }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="so_phong_ngu">Số phòng ngủ</label>
+                <select id="so_phong_ngu" name="so_phong_ngu">
+                    {% for so_phong_ngu in unique_so_phong_ngu %}
+                        <option value="{{ so_phong_ngu }}">{{ so_phong_ngu }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="so_phong_tam">Số phòng tắm</label>
+                <select id="so_phong_tam" name="so_phong_tam">
+                    {% for so_phong_tam in unique_so_phong_tam %}
+                        <option value="{{ so_phong_tam }}">{{ so_phong_tam }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dien_tich">Diện tích</label>
+                <select id="dien_tich" name="dien_tich">
+                    {% for dien_tich in unique_dien_tich %}
+                        <option value="{{ dien_tich }}">{{ dien_tich }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="loai">Loại nhà đất</label>
+                <select id="loai" name="loai">
+                    {% for loai in unique_loai %}
+                        <option value="{{ loai }}">{{ loai }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="re_co_san_noi_that" id="cosannoithat" value="1">
+                <label for="cosannoithat">Có sẵn nội thất</label>
+            </div>
+            <div class="form-group">
+                <label for="price_range">Giá (USD)</label>
+                <select id="price_range" name="price_range">
+                    <option value="0-20000">Dưới 2000 USD</option>
+                    <option value="20000-50000">2000 - 10,000 USD</option>
+                    <option value="50000-100000">10,000 - 50,000 USD</option>
+                    <option value="100000-300000">50,000 - 100,000 USD</option>
+                    <option value="500000+">Trên 100,000 USD</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <input type="checkbox" name="re_hem_xe_hoi" id="hemxehoi" value="1">
+                <label for="hemxehoi">Gara xe hơi</label>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Xem kết quả</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

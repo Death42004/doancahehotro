@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thế Giới Nhà Đất</title>
+    <!-- Thêm đường dẫn đến Font Awesome nếu bạn muốn sử dụng các icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMYY5pEN9sN9qZC5pHPGbo+4tSzqS2Z0bK2Txi" crossorigin="anonymous">
+    <!-- Thêm đường dẫn đến CSS -->
+    <style>
+        /* Một số CSS cơ bản cho bố cục */
+        .navigation {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #f8f8f8;
+        }
+        .search-icon {
+            width: 40px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .btn {
+            margin: 0 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+        }
+        .btn.search {
+            background-color: #28a745;
+        }
+        .btn.post {
+            background-color: #dc3545;
+        }
+        .containerr nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .containerr nav ul li {
+            margin: 10px 0;
+        }
+        .containerr nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+        .container {
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navigation">
+        <img src="anh4.png" alt="Property Search" class="search-icon">
+        <button class="btn search">Tìm bất động sản</button>
+        <button class="btn post">Đăng tin miễn phí</button>
+    </nav>
+    
+    <div class="containerr">
+        <nav class="bang">
+            <ul>
+                <li><a href=""><img style="width: 20px;" alt=""><i class="fas fa-home"></i> Trang chủ</a></li>
+                <li><a href=""><img style="width: 20px;" alt=""><i class="fas fa-home"></i> Nhà đất bán</a></li>
+                <li><a href=""><img style="width: 20px;" alt=""><i class="fas fa-home"></i> Dự án</a></li>
+                <li><a href=""><img style="width: 20px;" alt=""><i class="fas fa-home"></i> Tin tức</a></li>
+                <li><a href=""><img style="width: 20px;" alt=""><i class="fas fa-home"></i> Liên hệ</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="anh3">
+        <img src="anh3.png" alt="khung anh">
+    </div>
+    
+    <div class="container">
+        <form class="bg-dark-50 pt-3 px-3" action="/predict" method="POST">
+            <div class="row">
+                <div class="col-12 form-group demand-radios">
+                    <label class="demand-radio">
+                        <input name="demand" type="radio" value="148" checked="">
+                        <span class="name">Nhà đất bán</span>
+                    </label>
+                </div>
+                <div class="col-6 form-group">
+                    <input class="form-control" type="text" name="s" placeholder="Từ khóa">
+                </div>
+                <div class="col-6 form-group">
+                    <select id="khu_vuc" name="khu_vuc">
+                        <option value="">Chọn khu vực</option>
+                        <!-- Các khu vực sẽ được thêm động từ backend -->
+                    </select>
+                </div>
+                <div class="col-6 form-group">
+                    <select id="duong" name="duong">
+                        <option value="">Chọn đường</option>
+                        <!-- Các đường sẽ được thêm động từ backend -->
+                    </select>
+                </div>
+                <div class="col-6 form-group">
+                    <select id="so_phong_ngu" name="so_phong_ngu">
+                        <option value="">Chọn số phòng ngủ</option>
+                        <!-- Số phòng ngủ sẽ được thêm động từ backend -->
+                    </select>
+                </div>
+                <div class="col-6 form-group">
+                    <select class="form-control custom-select" name="building_orientation">
+                        <option value="0">Chọn hướng nhà</option>
+                        <option value="1">Đông</option>
+                        <option value="2">Tây</option>
+                        <option value="3">Nam</option>
+                        <option value="4">Bắc</option>
+                        <option value="5">Đông bắc</option>
+                        <option value="6">Đông nam</option>
+                        <option value="7">Tây bắc</option>
+                        <option value="8">Tây nam</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 form-group">
+                    <select class="form-control custom-select" name="min_price">
+                        <option value="0">Giá thấp nhất</option>
+                        <option value="100000">100,000 USD</option>
+                        <option value="200000">200,000 USD</option>
+                        <!-- Các mức giá khác -->
+                    </select>
+                </div>
+                <div class="col-6 form-group">
+                    <select class="form-control custom-select" name="max_price">
+                        <option value="0">Giá cao nhất</option>
+                        <option value="100000">100,000 USD</option>
+                        <option value="200000">200,000 USD</option>
+                        <!-- Các mức giá khác -->
+                    </select>
+                </div>
+                <div class="col-6 form-group">
+                    <input type="checkbox" name="re_co_san_noi_that" id="cosannoithat" value="1">
+                    <label for="cosannoithat">Có sẵn nội thất</label>
+                </div>
+                <div class="col-6 form-group">
+                    <input type="checkbox" name="re_hem_xe_hoi" id="hemxehoi" value="1">
+                    <label for="hemxehoi">Gara xe hơi</label>
+                </div>
+                <div class="col-12 form-group">
+                    <button class="btn btn-primary btn-block" type="submit">Xem kết quả</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

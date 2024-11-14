@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navigation {
+    top: 50px;
+    right: 0;
+    text-align: right;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 70%;
+}
+.search-icon {
+    width: 90px;
+    height: 70%;
+    margin: 0 245px;
+    margin-right: 45%;
+}
+.btn {
+    padding: 10px 20px;
+    margin: 0 30px;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+/* Thêm các quy tắc CSS khác ở đây */
